@@ -3,11 +3,10 @@
 import { useState } from "react";
 
 const EXAMPLE_NICHES = [
-  "Fitness coach for busy moms over 30",
-  "Luxury real estate agent selling $1M+ homes in Miami",
-  "Personal finance coach for college students drowning in debt",
-  "Career coach helping software engineers land FAANG jobs",
-  "Travel content creator doing budget backpacking in Southeast Asia",
+  "Fitness coach for busy moms",
+  "Personal finance for Gen Z",
+  "Career coach for engineers",
+  "Budget travel in Southeast Asia",
 ];
 
 interface NicheInputProps {
@@ -90,7 +89,7 @@ export default function NicheInput({ onSubmit, isLoading }: NicheInputProps) {
 
       <div className="mt-8">
         <p className="text-xs text-zinc-500 mb-3 text-center">Try an example:</p>
-        <div className="flex flex-wrap gap-2 justify-center">
+        <div className="grid grid-cols-2 gap-2 w-full">
           {EXAMPLE_NICHES.map((example) => (
             <button
               key={example}
@@ -99,7 +98,7 @@ export default function NicheInput({ onSubmit, isLoading }: NicheInputProps) {
                 onSubmit(example);
               }}
               disabled={isLoading}
-              className="px-3 py-1.5 text-sm bg-zinc-800/50 border border-zinc-700/50 text-zinc-400 rounded-lg hover:bg-zinc-700/50 hover:text-zinc-300 transition-all disabled:opacity-40"
+              className="px-3 py-1.5 text-sm bg-zinc-800/50 border border-zinc-700/50 text-zinc-400 rounded-lg hover:bg-zinc-700/50 hover:text-zinc-300 transition-all disabled:opacity-40 whitespace-nowrap text-center"
             >
               {example}
             </button>

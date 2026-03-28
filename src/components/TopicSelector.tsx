@@ -45,60 +45,65 @@ export default function TopicSelector({
 
   return (
     <div className="w-full max-w-3xl mx-auto">
-      <div className="flex items-center justify-between mb-6">
+      {/* Home button */}
+      <div className="flex justify-center mb-4">
         <button
           onClick={onBack}
           disabled={isLoading}
-          className="text-zinc-400 hover:text-white transition-colors flex items-center gap-1 text-sm"
+          className="px-4 py-1.5 bg-gradient-to-r from-purple-600/20 to-pink-600/20 border border-purple-500/30 text-purple-300 hover:text-purple-200 hover:border-purple-500/50 rounded-lg transition-all flex items-center gap-1.5 text-sm"
+          title="Home"
         >
-          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0a1 1 0 01-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 01-1 1h-2z" />
           </svg>
-          Back
+          Home
         </button>
+      </div>
 
-        {/* Settings row */}
-        <div className="flex items-center gap-4">
-          {/* Image AI toggle */}
-          <div className="flex items-center gap-2">
-            <span className="text-xs text-zinc-500">Image AI:</span>
-            <div className="flex bg-zinc-800 rounded-lg p-0.5">
-              <button
-                onClick={() => setImageProvider("openai")}
-                className={`px-3 py-1 text-xs rounded-md transition-all ${
-                  imageProvider === "openai"
-                    ? "bg-zinc-600 text-white"
-                    : "text-zinc-400 hover:text-zinc-300"
-                }`}
-              >
-                GPT Image
-              </button>
-              <button
-                onClick={() => setImageProvider("gemini")}
-                className={`px-3 py-1 text-xs rounded-md transition-all ${
-                  imageProvider === "gemini"
-                    ? "bg-zinc-600 text-white"
-                    : "text-zinc-400 hover:text-zinc-300"
-                }`}
-              >
-                Gemini
-              </button>
-            </div>
+      {/* Settings row */}
+      <div className="flex items-center justify-center gap-4 mb-6">
+        {/* Image AI toggle */}
+        <div className="flex items-center gap-2">
+          <span className="text-xs text-zinc-500">Image AI:</span>
+          <div className="flex bg-zinc-800 rounded-lg p-0.5">
+            <button
+              onClick={() => setImageProvider("openai")}
+              className={`px-3 py-1 text-xs rounded-md transition-all ${
+                imageProvider === "openai"
+                  ? "bg-zinc-600 text-white"
+                  : "text-zinc-400 hover:text-zinc-300"
+              }`}
+            >
+              GPT Image
+            </button>
+            <button
+              onClick={() => setImageProvider("gemini")}
+              className={`px-3 py-1 text-xs rounded-md transition-all ${
+                imageProvider === "gemini"
+                  ? "bg-zinc-600 text-white"
+                  : "text-zinc-400 hover:text-zinc-300"
+              }`}
+            >
+              Gemini
+            </button>
           </div>
+        </div>
 
-          {/* Image count toggle */}
-          <div className="flex items-center gap-2">
-            <span className="text-xs text-zinc-500">Images:</span>
-            <div className="flex bg-zinc-800 rounded-lg p-0.5">
-              <button
-                onClick={() => setImageCount(1)}
-                className={`px-3 py-1 text-xs rounded-md transition-all ${
-                  imageCount === 1
-                    ? "bg-zinc-600 text-white"
-                    : "text-zinc-400 hover:text-zinc-300"
-                }`}
-              >
-                1
+        <div className="w-px h-5 bg-zinc-700" />
+
+        {/* Image count toggle */}
+        <div className="flex items-center gap-2">
+          <span className="text-xs text-zinc-500">Images:</span>
+          <div className="flex bg-zinc-800 rounded-lg p-0.5">
+            <button
+              onClick={() => setImageCount(1)}
+              className={`px-3 py-1 text-xs rounded-md transition-all ${
+                imageCount === 1
+                  ? "bg-zinc-600 text-white"
+                  : "text-zinc-400 hover:text-zinc-300"
+              }`}
+            >
+              1
               </button>
               <button
                 onClick={() => setImageCount(3)}
@@ -112,7 +117,6 @@ export default function TopicSelector({
               </button>
             </div>
           </div>
-        </div>
       </div>
 
       {/* Warning for 3 images */}

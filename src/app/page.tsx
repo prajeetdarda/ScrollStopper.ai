@@ -114,9 +114,23 @@ export default function Home() {
       )}
 
       {/* Footer */}
-      <footer className="mt-auto pt-12 pb-4 text-center">
+      <footer className="mt-auto pt-12 pb-4 text-center space-y-1.5">
         <p className="text-xs text-zinc-600">
           ScrollStopper — AI is the director, you&apos;re the star
+        </p>
+        <p className="text-[13px] text-zinc-700">
+          Built by{" "}
+          <a href="https://prajeetdarda.github.io/" target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-zinc-400 transition-colors">
+            Prajeet Darda
+          </a>
+          {" "}&middot;{" "}
+          <a href="https://github.com/prajeetdarda" target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-zinc-400 transition-colors">
+            GitHub
+          </a>
+          {" "}&middot;{" "}
+          <a href="https://www.linkedin.com/in/prajeet-darda" target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-zinc-400 transition-colors">
+            LinkedIn
+          </a>
         </p>
       </footer>
     </div>

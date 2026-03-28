@@ -105,6 +105,27 @@ export default function NicheInput({ onSubmit, isLoading }: NicheInputProps) {
           ))}
         </div>
       </div>
+
+      {/* Coming Soon */}
+      <div className="mt-12 rounded-xl bg-gradient-to-br from-purple-500/15 via-pink-500/10 to-orange-400/10 border border-purple-400/20 p-5 backdrop-blur-sm">
+        <p className="text-[11px] bg-gradient-to-r from-purple-300 to-pink-300 bg-clip-text text-transparent uppercase tracking-widest text-center mb-3 font-semibold">Coming Soon</p>
+        <div className="grid grid-cols-2 gap-2">
+          {[
+            { icon: "📈", text: "Trending Hooks Feed" },
+            { icon: "📅", text: "Batch Mode — Week of Content" },
+            { icon: "🎥", text: "AI Hook Video Generation" },
+            { icon: "✂️", text: "AI Post-Production & Editing" },
+          ].map((item) => (
+            <div
+              key={item.text}
+              className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white/5 border border-white/10"
+            >
+              <span className="text-sm">{item.icon}</span>
+              <span className="text-[11px] text-zinc-300">{item.text}</span>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }

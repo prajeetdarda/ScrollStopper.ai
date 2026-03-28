@@ -72,6 +72,13 @@ src/
 └── proxy.ts                          # Clerk auth middleware
 ```
 
+## 🔮 Coming Soon
+
+- **Trending Hooks Feed** — real-time viral hook analysis for your niche
+- **Batch Mode** — generate a full week of content in one session
+- **AI Hook Video Generation** — 2-3 second hook videos instead of static images
+- **AI Post-Production** — film the raw clip, we handle captions, color grading, sound, and effects
+
 ## 💰 Cost Notes
 
 - **Claude (Anthropic)** — ~$0.01 per hook generation

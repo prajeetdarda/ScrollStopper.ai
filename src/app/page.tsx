@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useUser, SignInButton } from "@clerk/nextjs";
 import type { HookTopic, HookTemplate as HookTemplateType, AppStep, ImageProvider } from "@/lib/types";
 import NicheInput from "@/components/NicheInput";
 import TopicSelector from "@/components/TopicSelector";
@@ -8,6 +9,7 @@ import HookTemplate from "@/components/HookTemplate";
 import LoadingState from "@/components/LoadingState";
 
 export default function Home() {
+  const { isSignedIn, isLoaded } = useUser();
   const [step, setStep] = useState<AppStep>("niche");
   const [niche, setNiche] = useState("");
   const [topics, setTopics] = useState<HookTopic[]>([]);
@@ -84,6 +86,35 @@ export default function Home() {
     setStep("topics");
     setError(null);
   };
+
+  if (!isLoaded) {
+    return (
+      <div className="flex-1 flex items-center justify-center">
+        <div className="w-8 h-8 border-2 border-purple-500/20 border-t-purple-500 rounded-full animate-spin" />
+      </div>
+    );
+  }
+
+  if (!isSignedIn) {
+    return (
+      <div className="flex-1 flex flex-col items-center justify-center px-4 py-12">
+        <div className="text-center max-w-md">
+          <h1 className="text-5xl font-black tracking-tight bg-gradient-to-r from-purple-400 via-pink-500 to-orange-400 bg-clip-text text-transparent mb-4">
+            ScrollStopper
+          </h1>
+          <p className="text-zinc-400 text-lg mb-8">
+            AI-powered hook templates that show you exactly what to film.
+            Sign in to get started.
+          </p>
+          <SignInButton mode="modal">
+            <button className="px-8 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold rounded-xl hover:from-purple-500 hover:to-pink-500 transition-all text-lg">
+              Sign In with Google
+            </button>
+          </SignInButton>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="flex-1 flex flex-col items-center justify-center px-4 py-12">

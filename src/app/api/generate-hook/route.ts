@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { auth } from "@clerk/nextjs/server";
 import { generateHookTemplate } from "@/lib/claude";
 import { generateImage } from "@/lib/imageGen";
 import type { ImageProvider } from "@/lib/types";
@@ -6,6 +7,11 @@ import type { ImageProvider } from "@/lib/types";
 export const maxDuration = 120;
 
 export async function POST(req: NextRequest) {
+  const { userId } = await auth();
+  if (!userId) {
+    return NextResponse.json({ error: "Sign in to generate hooks" }, { status: 401 });
+  }
+
   try {
     const { niche, topic, imageProvider = "openai", imageCount = 1 } = await req.json();
 

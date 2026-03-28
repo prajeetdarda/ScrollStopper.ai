@@ -12,6 +12,9 @@ export const metadata: Metadata = {
   title: "ScrollStopper — AI Hook Templates for Instagram Reels",
   description:
     "Generate scroll-stopping reel hook templates with AI-powered creative direction. Get reference images, scripts, and director briefs tailored to your niche.",
+  icons: {
+    icon: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({

@@ -40,6 +40,9 @@ export default function RootLayout({
                 appearance={{
                   elements: {
                     avatarBox: "w-9 h-9",
+                    userButtonPopoverActionButton__manageAccount: {
+                      display: "none",
+                    },
                   },
                 }}
               />

@@ -6,6 +6,7 @@ import {
   UserButton,
 } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
+import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -53,6 +54,7 @@ export default function RootLayout({
             {children}
           </main>
         </ClerkProvider>
+        <Analytics />
       </body>
     </html>
   );

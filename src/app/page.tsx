@@ -7,6 +7,7 @@ import NicheInput from "@/components/NicheInput";
 import TopicSelector from "@/components/TopicSelector";
 import HookTemplate from "@/components/HookTemplate";
 import LoadingState from "@/components/LoadingState";
+import InfiniteScrollBackground from "@/components/InfiniteScrollBackground";
 
 export default function Home() {
   const { isSignedIn, isLoaded } = useUser();
@@ -97,21 +98,72 @@ export default function Home() {
 
   if (!isSignedIn) {
     return (
-      <div className="flex-1 flex flex-col items-center justify-center px-4 py-12">
-        <div className="text-center max-w-md">
-          <h1 className="text-5xl font-black tracking-tight bg-gradient-to-r from-purple-400 via-pink-500 to-orange-400 bg-clip-text text-transparent mb-4">
-            ScrollStopper
-          </h1>
-          <p className="text-zinc-400 text-lg mb-8">
-            AI-powered hook templates that show you exactly what to film.
-            Sign in to get started.
-          </p>
-          <SignInButton mode="modal">
-            <button className="px-8 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold rounded-xl hover:from-purple-500 hover:to-pink-500 transition-all text-lg">
-              Sign In with Google
-            </button>
-          </SignInButton>
+      <div className="flex-1 flex flex-col relative overflow-hidden">
+        <InfiniteScrollBackground />
+
+        <div className="flex-1 flex items-center justify-center px-4 py-20 relative z-10">
+          <div className="text-center max-w-2xl mx-auto">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.04] border border-white/[0.08] backdrop-blur-sm mb-8">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
+              </span>
+              <span className="text-sm text-zinc-300 font-medium">AI-Powered Content Creation</span>
+            </div>
+
+            <h1 className="text-6xl sm:text-7xl md:text-8xl font-black tracking-tighter leading-[0.9] mb-6">
+              <span className="block bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent">
+                Scroll
+              </span>
+              <span className="block bg-gradient-to-r from-purple-400 via-pink-400 to-orange-400 bg-clip-text text-transparent">
+                Stopper
+              </span>
+            </h1>
+
+            <p className="text-lg sm:text-xl text-zinc-400 mb-10 max-w-lg mx-auto leading-relaxed">
+              Generate viral hook templates with AI. Get scripts, director
+              briefs, and reference images — all tailored to your niche.
+            </p>
+
+            <SignInButton mode="modal">
+              <button className="group relative px-10 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold rounded-2xl text-lg transition-all duration-300 hover:shadow-[0_0_40px_rgba(168,85,247,0.4)] hover:scale-[1.02] active:scale-[0.98] cursor-pointer">
+                Get Started Free
+                <span className="absolute inset-0 rounded-2xl bg-gradient-to-r from-purple-600 to-pink-600 blur-xl opacity-30 group-hover:opacity-50 transition-opacity -z-10" />
+              </button>
+            </SignInButton>
+
+            <div className="flex flex-wrap gap-3 justify-center mt-12">
+              {["Hook Scripts", "Director Briefs", "Reference Images", "Trend Analysis"].map((feature) => (
+                <span
+                  key={feature}
+                  className="px-4 py-2 rounded-full bg-white/[0.03] border border-white/[0.06] text-sm text-zinc-500 backdrop-blur-sm"
+                >
+                  {feature}
+                </span>
+              ))}
+            </div>
+          </div>
         </div>
+
+        <footer className="relative z-10 pb-6 pt-4 text-center space-y-1.5">
+          <p className="text-xs text-zinc-600">
+            ScrollStopper — AI is the director, you&apos;re the star
+          </p>
+          <p className="text-[13px] text-zinc-700">
+            Built by{" "}
+            <a href="https://prajeetdarda.github.io/" target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-zinc-400 transition-colors">
+              Prajeet Darda
+            </a>
+            {" "}&middot;{" "}
+            <a href="https://github.com/prajeetdarda" target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-zinc-400 transition-colors">
+              GitHub
+            </a>
+            {" "}&middot;{" "}
+            <a href="https://www.linkedin.com/in/prajeet-darda" target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-zinc-400 transition-colors">
+              LinkedIn
+            </a>
+          </p>
+        </footer>
       </div>
     );
   }
